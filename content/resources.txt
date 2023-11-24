@@ -1,1 +1,1 @@
-- [Map](../files/PAKA Map.pdf)
+- [Map](./files/PAKA Map.pdf)
