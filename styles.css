@@ -63,7 +63,6 @@ h1, h2, h3, h4, h5, h6 {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-    height: 1000px;
 }
 td, tr, pre {
     color: white;
@@ -85,7 +84,12 @@ table {
     margin-top: 2rem;
     display: flex;
     flex-direction: row-reverse;
-    height: 600px;
+    /* height: 600px; */
+}
+
+span.row {
+    color: white;
+    margin-left: 1rem;
 }
 
 #resources {
