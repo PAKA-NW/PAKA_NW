@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PAKA Neighborhood Watch</title>
+    <link rel="stylesheet" href="styles.css">
+    <div class="navbar">
+        <ul>
+            <li><a href="#first-block">News</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+    </div>
+  </head>
+  <body>
+    <div class="content">
+        <h1>Welcome to PAKA Neighborhood Watch!</h1>
+
+        <div id="first-block">
+            <div id="news">
+                <h1>News</h1>
+                <iframe id="news_file" referrerpolicy="origin" src="content/news.txt" --allow-file-access-from-files onload="news_func();" style="display: none;" ></iframe>
+                <div class="dynamic-content" id="newsf">
+                </div>
+            </div>
+            <div id="resources">
+                <h1>Resources</h1>
+                <iframe id="resources_file" referrerpolicy="origin" --allow-file-access-from-files src="content/resources.txt" onload="resources_func();" style="display: none;" ></iframe>
+                <div class="dynamic-content" id="res">
+                </div>
+            </div>
+        </div>
+        <div id="about">
+            <h1 class="heading">About</h1>
+            <iframe id="about_file" referrerpolicy="origin" src="content/about.txt" --allow-file-access-from-files onload="about_func();" style="display: none;" ></iframe>
+            <div class="dynamic-content" id="aboutf">
+            </div>
+        </div>
+        <div id="contact">
+            <h1>Contact</h1>
+            <!-- <iframe id="contact_file" referrerpolicy="origin" src="content/contact.txt" onload="contact();" style="display: none;" ></iframe> -->
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        const resources = document.getElementById("res");
+        const news = document.getElementById("newsf");
+        const about = document.getElementById("aboutf");
+        function resources_func() {
+            resources.innerHTML = get_file("resources_file");
+        }
+        function news_func() {
+            news.innerHTML = get_file("news_file");
+        }
+        function about_func() {
+            about.innerHTML = get_file("about_file");
+        }
+        function get_file(file) {
+            var oFrame = document.getElementById(file);
+            var strRawContents = oFrame.contentWindow.document.body.childNodes[0].innerHTML;
+            while (strRawContents.indexOf("\r") >= 0)
+                strRawContents = strRawContents.replace("\r", "");
+            return marked.parse(strRawContents);
+            }
+
+    </script>
+  </body>
+</html>
